@@ -1,3 +1,5 @@
+This fork has a fix for a bug in the original repository of mavlink .i.e. it used to read and write integer mavlink parameters as floats.
+
 A Node.js module for encoding/decoding MAVLink messages
 ======================================================================
 
