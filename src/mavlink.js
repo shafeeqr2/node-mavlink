@@ -638,8 +638,14 @@ mavlink.prototype.bufferField = function(buf, offset, field, value) {
 				//buf.writeFloatLE(value[i],offset);
 				break;
 			case 'uint64_t':
-				console.warn("No 64-bit Integer support yet!");
+				// console.warn("No 64-bit Integer support yet!");
 				//buf.writeFloatLE(value[i],offset);
+				const part1 =  Math.floor(valueArr[i] / 4294967296)
+				const part2 =  (valueArr[i] & 0xffffffff) >>> 0
+	
+				buf.writeUInt32LE(Number(part1), offset)
+				buf.writeUInt32LE(Number(part2), offset + 4)
+				
 				break;
 		}
 		//Keep track of how far we've come
